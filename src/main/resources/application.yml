@@ -1,0 +1,47 @@
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    # Configurações globais para consumidores
+    consumer:
+      auto-offset-reset: earliest
+
+    # Configurações específicas para o consumer de processamento de vídeos
+    video-consumer:
+      group-id: video-group
+      topic: video-topic
+
+    # Configurações específicas para o consumer de notificações por e-mail
+    email-consumer:
+      group-id: email-notification-group
+      topic: video-status-topic
+
+    # Configurações do producer (se necessário)
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    # Configurações do Kafka Streams (se necessário)
+    streams:
+      application-id: video-processing-streams
+      properties:
+        default:
+          key:
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          value:
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
+  # Configurações do serviço de e-mail
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: matheuspatricio999@gmail.com
+    password: gnhf vmpj yqva opyt
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

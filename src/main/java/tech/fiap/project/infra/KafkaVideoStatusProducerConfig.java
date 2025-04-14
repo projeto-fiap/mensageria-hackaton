@@ -9,7 +9,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import tech.fiap.project.domain.VideoStatusMessage;
+import tech.fiap.project.dto.VideoStatusMessage;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -17,21 +17,13 @@ spring:
     # Configurações específicas para o consumer de notificações por e-mail
     email-consumer:
       group-id: email-notification-group
-      topic: video-status-topic
+      topic: v1.video-upload-status
 
     # Configurações do producer (se necessário)
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    # Configurações do Kafka Streams (se necessário)
-    streams:
-      application-id: video-processing-streams
-      properties:
-        default:
-          key:
-            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-          value:
-            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
 
   # Configurações do serviço de e-mail
   mail:

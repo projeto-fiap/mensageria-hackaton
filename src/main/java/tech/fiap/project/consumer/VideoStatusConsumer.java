@@ -14,20 +14,23 @@ import tech.fiap.project.strategy.EmailStrategyFactory;
 @Slf4j
 public class VideoStatusConsumer {
 
-    private final EmailStrategyFactory strategyFactory;
-    private final ObjectMapper objectMapper;
+	private final EmailStrategyFactory strategyFactory;
 
-    @KafkaListener(topics = "${spring.kafka.email-consumer.topic}", groupId = "notifier-service")
-    public void consumeVideoStatus(String message) {
-        try {
-            VideoStatusMessage videoStatus = objectMapper.readValue(message, VideoStatusMessage.class);
-            log.info("Received video status: " + videoStatus);
+	private final ObjectMapper objectMapper;
 
-            EmailStrategy strategy = strategyFactory.getStrategy(videoStatus.getStatus()).get();
-            strategy.handle(videoStatus);
-        } catch (Exception e) {
-            log.error("Erro ao processar a mensagem: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+	@KafkaListener(topics = "${spring.kafka.email-consumer.topic}", groupId = "notifier-service")
+	public void consumeVideoStatus(String message) {
+		try {
+			VideoStatusMessage videoStatus = objectMapper.readValue(message, VideoStatusMessage.class);
+			log.info("Received video status: " + videoStatus);
+
+			EmailStrategy strategy = strategyFactory.getStrategy(String.valueOf(videoStatus.getStatus())).get();
+			strategy.handle(videoStatus);
+		}
+		catch (Exception e) {
+			log.error("Erro ao processar a mensagem: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
 }

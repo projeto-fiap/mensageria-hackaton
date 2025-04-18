@@ -9,20 +9,19 @@ import tech.fiap.project.dto.PersonWithVideoDTO;
 @Service
 public class VideoInfoService {
 
-    private final RestTemplate restTemplate;
-    private final String videoServiceBaseUrl;
+	private final RestTemplate restTemplate;
 
-    public VideoInfoService(
-            RestTemplate restTemplate,
-            @Value("${video.service.url}") String videoServiceBaseUrl
-    ) {
-        this.restTemplate = restTemplate;
-        this.videoServiceBaseUrl = videoServiceBaseUrl;
-    }
+	private final String videoServiceBaseUrl;
 
-    public PersonWithVideoDTO fetchPersonByVideoHash(String hashNome) {
-        String url = videoServiceBaseUrl + "/video/hash/" + hashNome;
-        ResponseEntity<PersonWithVideoDTO> response = restTemplate.getForEntity(url, PersonWithVideoDTO.class);
-        return response.getBody();
-    }
+	public VideoInfoService(RestTemplate restTemplate, @Value("${video.service.url}") String videoServiceBaseUrl) {
+		this.restTemplate = restTemplate;
+		this.videoServiceBaseUrl = videoServiceBaseUrl;
+	}
+
+	public PersonWithVideoDTO fetchPersonByVideoHash(String hashNome) {
+		String url = videoServiceBaseUrl + "/video/hash/" + hashNome;
+		ResponseEntity<PersonWithVideoDTO> response = restTemplate.getForEntity(url, PersonWithVideoDTO.class);
+		return response.getBody();
+	}
+
 }

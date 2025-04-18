@@ -1,0 +1,27 @@
+server:
+  port: 0  # Porta aleatória para testes
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST:localhost}:${KAFKA_PORT:9092}
+    consumer:
+      auto-offset-reset: earliest
+    email-consumer:
+      group-id: test-email-group
+      topic: test-video-status
+
+  mail:
+    host: localhost
+    port: 1025  # MailHog para testes
+    username: test@example.com
+    password: test
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+
+video:
+  service:
+    url: http://localhost:2020

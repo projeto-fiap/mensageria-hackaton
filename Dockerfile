@@ -9,8 +9,8 @@ RUN apt-get update \
 && apt-get clean \
 && git config --global user.name "Leonardo Soares" \
 && git config --global user.email "leonardo.soares@sptech.school.com.br" \
-&& git clone https://github.com/projeto-fiap/tech-challenge-payments.git
-WORKDIR /app/tech-challenge-payments
+&& git clone https://github.com/projeto-fiap/mensageria-hackaton.git
+WORKDIR /app/mensageria-hackaton
 
 RUN apt-get update \
 && apt-get install --no-install-recommends -y build-essential maven \
@@ -21,4 +21,4 @@ RUN useradd -m nonroot
 
 USER nonroot
 EXPOSE 8080
-CMD ["java", "-jar", "target/tech-challenge-payments-0.0.2-SNAPSHOT.jar", "--spring.profiles.active=prd"]
+CMD ["java", "-jar", "target/mensageria-hackaton-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=prd"]

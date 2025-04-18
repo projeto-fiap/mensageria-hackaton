@@ -11,21 +11,24 @@ import tech.fiap.project.service.VideoInfoService;
 @Slf4j
 public class OkStatusEmailStrategy implements EmailStrategy {
 
-    private final VideoInfoService videoInfoService;
-    private final EmailService emailService;
+	private final VideoInfoService videoInfoService;
 
-    public OkStatusEmailStrategy(VideoInfoService videoInfoService, EmailService emailService) {
-        this.videoInfoService = videoInfoService;
-        this.emailService = emailService;
-    }
+	private final EmailService emailService;
 
-    @Override
-    public void handle(VideoStatusMessage message) {
-        PersonWithVideoDTO personWithVideoDTO = videoInfoService.fetchPersonByVideoHash(message.getVideoId());
-        if (personWithVideoDTO == null) {
-            log.error("Pessoa não encontrada para o vídeo com hash: " + message.getVideoId());
-            return;
-        }
-        emailService.sendEmail(personWithVideoDTO.getPersonEmail(), personWithVideoDTO.getVideoNome(), "Seu vídeo foi processado com sucesso!");
-    }
+	public OkStatusEmailStrategy(VideoInfoService videoInfoService, EmailService emailService) {
+		this.videoInfoService = videoInfoService;
+		this.emailService = emailService;
+	}
+
+	@Override
+	public void handle(VideoStatusMessage message) {
+		PersonWithVideoDTO personWithVideoDTO = videoInfoService.fetchPersonByVideoHash(message.getVideoId());
+		if (personWithVideoDTO == null) {
+			log.error("Pessoa não encontrada para o vídeo com hash: " + message.getVideoId());
+			return;
+		}
+		emailService.sendEmail(personWithVideoDTO.getPersonEmail(), personWithVideoDTO.getVideoNome(),
+				"Seu vídeo foi processado com sucesso!");
+	}
+
 }

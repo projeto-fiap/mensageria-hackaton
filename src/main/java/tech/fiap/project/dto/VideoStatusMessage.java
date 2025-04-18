@@ -11,6 +11,10 @@ public class VideoStatusMessage {
 
 	private String storage;
 
-	private String status;
+	private String message;
+
+	private String downloadUrl;
+
+	private VideoStatus status;
 
 }

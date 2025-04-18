@@ -29,7 +29,7 @@ public class ErrorStatusEmailStrategy implements EmailStrategy {
 			return;
 		}
 		emailService.sendEmail(personWithVideoDTO.getPersonEmail(), personWithVideoDTO.getVideoNome(),
-				"Erro no processamento do video!  "+ message.getMessage());
+				"Erro no processamento do video!  " + message.getMessage());
 
 	}
 

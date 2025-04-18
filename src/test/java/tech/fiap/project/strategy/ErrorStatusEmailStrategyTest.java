@@ -39,6 +39,7 @@ class ErrorStatusEmailStrategyTest {
 		errorMessage = new VideoStatusMessage();
 		errorMessage.setVideoId(VIDEO_HASH);
 		errorMessage.setStatus(VideoStatus.ERRO);
+		errorMessage.setMessage("ERRO NO SISTEMA");
 
 		personWithVideoDTO = new PersonWithVideoDTO(1L, "John Doe", "12345678901", "user@example.com", 1L, "My Video",
 				"http://example.com/video123", "ERROR", LocalDateTime.now(), LocalDateTime.now());
@@ -52,7 +53,7 @@ class ErrorStatusEmailStrategyTest {
 
 		verify(videoInfoService).fetchPersonByVideoHash(VIDEO_HASH);
 		verify(emailService).sendEmail("user@example.com", "My Video",
-				"Erro no processamento do video! Consulte a plataforma para mais informações!");
+				"Erro no processamento do video!  " + errorMessage.getMessage());
 	}
 
 	@Test
@@ -74,7 +75,7 @@ class ErrorStatusEmailStrategyTest {
 		errorStatusEmailStrategy.handle(errorMessage);
 
 		verify(emailService).sendEmail("jane@example.com", "Failed Video",
-				"Erro no processamento do video! Consulte a plataforma para mais informações!");
+				"Erro no processamento do video!  " + errorMessage.getMessage());
 	}
 
 }

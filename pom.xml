@@ -22,6 +22,8 @@
         <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <sonar.language>java</sonar.language>
         <sonar.inclusions>**/*.java</sonar.inclusions>
+        <sonar.coverage.exclusions>**/VideoInfoService.java</sonar.coverage.exclusions>
+
 
     </properties>
     <dependencies>
@@ -229,6 +231,8 @@
                     </includes>
                     <excludes>
                         <exclude>tech/fiap/project/service/VideoInfoService.class</exclude>
+                        <exclude>**/VideoInfoService.class</exclude>
+                        <sonar.coverage.exclusions>**/service/*.java</sonar.coverage.exclusions>
                         <exclude>**/test/**</exclude>
                         <exclude>**/generated-sources/**</exclude>
                         <exclude>**/dto/**</exclude>

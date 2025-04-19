@@ -228,7 +228,7 @@
                         <include>tech/fiap/project/**/*</include>
                     </includes>
                     <excludes>
-                        <exclude>**/service/**</exclude>
+                        <exclude>tech/fiap/project/service/VideoInfoService.class</exclude>
                         <exclude>**/test/**</exclude>
                         <exclude>**/generated-sources/**</exclude>
                         <exclude>**/dto/**</exclude>

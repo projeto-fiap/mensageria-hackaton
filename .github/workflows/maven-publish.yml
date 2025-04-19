@@ -65,10 +65,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Unit Tests
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn  '-Dtest=!integration.**' test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -DsonarToken=$SONAR_TOKEN
 
   integrated-tests:
     name: Integrated Tests

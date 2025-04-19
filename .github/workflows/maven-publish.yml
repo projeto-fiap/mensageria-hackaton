@@ -169,13 +169,14 @@ jobs:
         run: |
           kubectl delete secret mensageria-env-secrets --ignore-not-found -n default-namespace
           kubectl create secret generic mensageria-env-secrets \
-            --from-literal=KAFKA_SERVER=${{ secrets.KAFKA_SERVER }} \
-            --from-literal=KEYCLOAK_URL=${{ secrets.KEYCLOAK_URL }} \
-            --from-literal=VIDEO_SERVICE_URL=${{ secrets.VIDEO_SERVICE_URL }} \
-            --from-literal=ISSUER_URI=${{ secrets.ISSUER_URI }} \
-            --from-literal=SPRING_MAIL_USERNAME=${{ secrets.SPRING_MAIL_USERNAME }} \
-            --from-literal=SPRING_MAIL_PASSWORD=${{ secrets.SPRING_MAIL_PASSWORD }} \
+            --from-literal=KAFKA_SERVER="${{ secrets.KAFKA_SERVER }}" \
+            --from-literal=KEYCLOAK_URL="${{ secrets.KEYCLOAK_URL }}" \
+            --from-literal=VIDEO_SERVICE_URL="${{ secrets.VIDEO_SERVICE_URL }}" \
+            --from-literal=ISSUER_URI="${{ secrets.ISSUER_URI }}" \
+            --from-literal=SPRING_MAIL_USERNAME="${{ secrets.SPRING_MAIL_USERNAME }}" \
+            --from-literal=SPRING_MAIL_PASSWORD="${{ secrets.SPRING_MAIL_PASSWORD }}" \
             -n default-namespace
+
 
       - name: Deploy Kubernetes Resources
         run: |

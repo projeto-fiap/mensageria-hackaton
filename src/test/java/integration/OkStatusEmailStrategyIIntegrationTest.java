@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ActiveProfiles;
 import tech.fiap.project.ProjectApplication;
 import tech.fiap.project.dto.PersonWithVideoDTO;
 import tech.fiap.project.dto.VideoStatusMessage;
@@ -15,6 +16,7 @@ import tech.fiap.project.strategy.OkStatusEmailStrategy;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = ProjectApplication.class)
+@ActiveProfiles("test")
 @ComponentScan(basePackages = "tech.fiap.project")
 class OkStatusEmailStrategyIIntegrationTest {
 

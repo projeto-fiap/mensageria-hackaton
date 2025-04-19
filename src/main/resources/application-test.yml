@@ -24,4 +24,8 @@ spring:
 
 video:
   service:
-    url: http://localhost:2020
+    url: http://localhost:8091
+    keycloak-url: http://localhost:29000
+    keycloak-realm: master
+    keycloak-client-id: mensageria-hackaton
+    keycloak-client-secret: kHwr7Aw2yD3vFdeoBV6ICuij5vlZiEy4

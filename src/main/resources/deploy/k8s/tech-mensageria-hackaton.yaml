@@ -26,7 +26,33 @@ spec:
           ports:
             - containerPort: 8081
           env:
-            - name: KEYCLOAK_BASE_URL
-              value: http://a740e813c410c4d05a99835a58e149d0-1270066710.us-east-1.elb.amazonaws.com
+            - name: KAFKA_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: KAFKA_SERVER
+            - name: KEYCLOAK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: KEYCLOAK_URL
             - name: VIDEO_SERVICE_URL
-              value: http://a67d717ba3572466c8dcfae5401626b4-798609356.us-east-1.elb.amazonaws.com
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: VIDEO_SERVICE_URL
+            - name: ISSUER_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: ISSUER_URI
+            - name: SPRING_MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: SPRING_MAIL_USERNAME
+            - name: SPRING_MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mensageria-env-secrets
+                  key: SPRING_MAIL_PASSWORD

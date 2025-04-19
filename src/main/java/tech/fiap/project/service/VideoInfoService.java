@@ -26,6 +26,7 @@ public class VideoInfoService {
 
 	@Value("${video.service.keycloak-url}")
 	private String baseUrl;
+
 	@Value("${video.service.keycloak-client-secret}")
 	private String clientSecret;
 
@@ -42,12 +43,8 @@ public class VideoInfoService {
 
 		HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
-		ResponseEntity<PersonWithVideoDTO> response = restTemplate.exchange(
-				url,
-				HttpMethod.GET,
-				requestEntity,
-				PersonWithVideoDTO.class
-		);
+		ResponseEntity<PersonWithVideoDTO> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+				PersonWithVideoDTO.class);
 
 		return response.getBody();
 	}
@@ -75,6 +72,5 @@ public class VideoInfoService {
 
 		return null;
 	}
-
 
 }

@@ -4,7 +4,7 @@ server:
 spring:
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_SERVER}
 
     # Configurações globais para consumidores
     consumer:
@@ -42,12 +42,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:29000/realms/master
+          issuer-uri: ${ISSUER_URI}
 
 video:
   service:
-    url: http://localhost:8091
-    keycloak-url: http://localhost:29000
+    url: ${VIDEO_SERVICE_URL}
+    keycloak-url: ${KEYCLOAK_URL}
     keycloak-realm: master
     keycloak-client-id: mensageria-hackaton
     keycloak-client-secret: kHwr7Aw2yD3vFdeoBV6ICuij5vlZiEy4

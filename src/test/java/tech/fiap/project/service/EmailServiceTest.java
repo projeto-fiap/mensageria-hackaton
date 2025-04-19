@@ -11,31 +11,33 @@ import static org.mockito.Mockito.*;
 
 class EmailServiceTest {
 
-    private JavaMailSender mailSender;
-    private EmailService emailService;
+	private JavaMailSender mailSender;
 
-    @BeforeEach
-    void setUp() {
-        mailSender = mock(JavaMailSender.class);
-        emailService = new EmailService(mailSender);
-    }
+	private EmailService emailService;
 
-    @Test
-    void shouldSendEmailWithCorrectContent() {
-        String userEmail = "teste@exemplo.com";
-        String videoName = "Aula Java";
-        String status = "Processado";
+	@BeforeEach
+	void setUp() {
+		mailSender = mock(JavaMailSender.class);
+		emailService = new EmailService(mailSender);
+	}
 
-        ArgumentCaptor<SimpleMailMessage> messageCaptor = ArgumentCaptor.forClass(SimpleMailMessage.class);
+	@Test
+	void shouldSendEmailWithCorrectContent() {
+		String userEmail = "teste@exemplo.com";
+		String videoName = "Aula Java";
+		String status = "Processado";
 
-        emailService.sendEmail(userEmail, videoName, status);
+		ArgumentCaptor<SimpleMailMessage> messageCaptor = ArgumentCaptor.forClass(SimpleMailMessage.class);
 
-        verify(mailSender, times(1)).send(messageCaptor.capture());
-        SimpleMailMessage sentMessage = messageCaptor.getValue();
+		emailService.sendEmail(userEmail, videoName, status);
 
-        assertNotNull(sentMessage);
-        assertArrayEquals(new String[]{userEmail}, sentMessage.getTo());
-        assertEquals("Status do Vídeo: " + videoName, sentMessage.getSubject());
-        assertEquals("O status do seu vídeo " + videoName + " é: " + status, sentMessage.getText());
-    }
+		verify(mailSender, times(1)).send(messageCaptor.capture());
+		SimpleMailMessage sentMessage = messageCaptor.getValue();
+
+		assertNotNull(sentMessage);
+		assertArrayEquals(new String[] { userEmail }, sentMessage.getTo());
+		assertEquals("Status do Vídeo: " + videoName, sentMessage.getSubject());
+		assertEquals("O status do seu vídeo " + videoName + " é: " + status, sentMessage.getText());
+	}
+
 }

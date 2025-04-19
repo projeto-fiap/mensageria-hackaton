@@ -1,5 +1,6 @@
 package tech.fiap.project.service;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,7 @@ public class VideoInfoService {
 
 		return response.getBody();
 	}
+
 	private String getUserToken() {
 		String url = String.format("%s/realms/%s/protocol/openid-connect/token", baseUrl, realm);
 
@@ -65,7 +67,14 @@ public class VideoInfoService {
 
 		ResponseEntity<Map> response = new RestTemplate().postForEntity(url, request, Map.class);
 
-		return (String) response.getBody().get("access_token");
+		Map<?, ?> responseBody = (response != null) ? response.getBody() : null;
+
+		if (responseBody != null && responseBody.containsKey("access_token")) {
+			return (String) responseBody.get("access_token");
+		}
+
+		return null;
 	}
+
 
 }

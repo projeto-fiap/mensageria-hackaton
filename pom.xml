@@ -228,6 +228,7 @@
                         <include>tech/fiap/project/**/*</include>
                     </includes>
                     <excludes>
+                        <exclude>**/service/**</exclude>
                         <exclude>**/test/**</exclude>
                         <exclude>**/generated-sources/**</exclude>
                         <exclude>**/dto/**</exclude>

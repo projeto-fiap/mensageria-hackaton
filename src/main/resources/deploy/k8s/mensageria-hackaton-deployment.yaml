@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mensageria-hackaton
-          image: matheuspatricio0/target/mensageria-hackaton-0.0.1:latest
+          image: matheuspatricio0/mensageria-hackaton:latest
           resources:
             requests:
               memory: "256Mi"

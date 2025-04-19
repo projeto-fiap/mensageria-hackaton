@@ -50,4 +50,4 @@ video:
     keycloak-url: ${KEYCLOAK_URL}
     keycloak-realm: master
     keycloak-client-id: mensageria-hackaton
-    keycloak-client-secret: kHwr7Aw2yD3vFdeoBV6ICuij5vlZiEy4
+    keycloak-client-secret: 8aBLwKpUhGRrWUJDQGLTJRtzEXeMurGW

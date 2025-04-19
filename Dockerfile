@@ -21,4 +21,4 @@ RUN useradd -m nonroot
 
 USER nonroot
 EXPOSE 8080
-CMD ["java", "-jar", "target/mensageria-hackaton-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=prd"]
+CMD ["java", "-jar", "target/mensageria-hackaton-0.0.2-SNAPSHOT.jar", "--spring.profiles.active=prd"]

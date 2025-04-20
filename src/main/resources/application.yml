@@ -49,5 +49,5 @@ video:
     url: ${VIDEO_SERVICE_URL}
     keycloak-url: ${KEYCLOAK_URL}
     keycloak-realm: master
-    keycloak-client-id: mensageria-hackaton
-    keycloak-client-secret: 8aBLwKpUhGRrWUJDQGLTJRtzEXeMurGW
+    keycloak-client-id: tech-challenge-payments
+    keycloak-client-secret: "**********"

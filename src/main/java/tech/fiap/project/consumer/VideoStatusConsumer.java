@@ -18,7 +18,7 @@ public class VideoStatusConsumer {
 
 	private final ObjectMapper objectMapper;
 
-	@KafkaListener(topics = "${spring.kafka.email-consumer.topic}", groupId = "notifier-service")
+	@KafkaListener(topics = "v1.video-status", groupId = "video-service")
 	public void consumeVideoStatus(String message) {
 		try {
 			VideoStatusMessage videoStatus = objectMapper.readValue(message, VideoStatusMessage.class);
